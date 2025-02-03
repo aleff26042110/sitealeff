@@ -5,41 +5,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartão de Visita NFC</title>
     <style>
+        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
+
+        /* Estilos globais */
         body {
-            background-color: #f4f4f4;
-            text-align: center;
+            background: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             padding: 20px;
+            overflow: hidden;
+            position: relative;
         }
+
+        /* Efeito de brilho metálico no fundo */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 20%),
+                        radial-gradient(circle, rgba(255, 255, 255, 0.05) 20%, transparent 30%);
+            background-size: 100px 100px;
+            animation: moveBackground 10s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(100px, 100px);
+            }
+        }
+
         .container {
             max-width: 400px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: auto;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
         }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+        }
+
         h1 {
-            color: #333;
-            margin-bottom: 10px;
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
+
         p {
-            color: #666;
-            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
+
         .social-links a {
             display: block;
             text-decoration: none;
             color: #fff;
-            background: #007bff;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.8), rgba(0, 86, 179, 0.8));
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 20%);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, rgba(0, 86, 179, 0.8), rgba(0, 123, 255, 0.8));
+            transform: scale(1.05);
+        }
+
+        .social-links a:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .social-links a:active {
+            transform: scale(0.95);
+        }
+
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .social-links a {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -48,8 +150,8 @@
         <h1>Cartão NFC</h1>
         <p>Entre em contato e conheça nossas tags e cartões NFC!</p>
         <div class="social-links">
-            <a href="https://wa.me/seunumero" target="_blank">WhatsApp</a>
-            <a href="https://instagram.com/seuinstagram" target="_blank">Instagram</a>
+            <a href="https://wa.me/5519998098483" target="_blank">WhatsApp</a>
+            <a href="https://www.instagram.com/evolts_evolution?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
         </div>
     </div>
 </body>
